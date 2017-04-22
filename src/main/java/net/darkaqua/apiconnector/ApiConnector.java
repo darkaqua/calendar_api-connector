@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by srpag on 22/04/17.
+ * Created by Pablo on 22/04/17.
  */
 public class ApiConnector {
 
