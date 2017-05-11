@@ -46,7 +46,7 @@ public class ApiConnector {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    String params = jsonObject != null ? jsonObject.toString() : null;
+                    String params = jsonObject == null || jsonObject.length() == 0 ? null : jsonObject.toString();
 
                     request.Response(getRequest(path, method, params));
                 } catch (Exception e) {
@@ -61,6 +61,7 @@ public class ApiConnector {
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod(method);
+        System.out.println(url.toString());
         if(client_id != null && client_token != null){
             conn.setRequestProperty("client_id", client_id);
             conn.setRequestProperty("client_token", client_token);

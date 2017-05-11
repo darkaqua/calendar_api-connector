@@ -11,13 +11,12 @@ public class Example {
     private static final String CLIENT_TOKEN = "4e8b107d9f5ba114a5a3eaa1b2513b2b7ddd16d24e874d9205137a52eae40bab";
 
     public static void main(String[] args) throws Exception{    
-        ApiConnector apiConnector = new ApiConnector("calendar.darkaqua.net", 8080);
+        ApiConnector apiConnector = new ApiConnector("localhost", 22322);
         apiConnector.auth(CLIENT_ID, CLIENT_TOKEN);
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("search", "1");
 
-        apiConnector.PUT("Company/Group/User", jsonObject, new Request() {
+        apiConnector.GET("user/companies", jsonObject, new Request() {
 
             public void Response(Object object) {
                 System.out.println(object.toString());
