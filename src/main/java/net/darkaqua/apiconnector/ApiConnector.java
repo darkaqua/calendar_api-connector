@@ -57,16 +57,16 @@ public class ApiConnector {
     }
 
     private Object getRequest(String path, String method, String params) throws Exception{
-        URL url = new URL(this.url + path);
+        boolean isGET = method.equalsIgnoreCase("GET");
+        URL url = new URL(this.url + path + (isGET ? "?params=" + params : ""));
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod(method);
-        System.out.println(url.toString());
         if(client_id != null && client_token != null){
             conn.setRequestProperty("client_id", client_id);
             conn.setRequestProperty("client_token", client_token);
         }
-        if(params != null){
+        if(params != null && !isGET){
             conn.setDoOutput(true);
             conn.setRequestProperty("Content-Type", "application/json");
 

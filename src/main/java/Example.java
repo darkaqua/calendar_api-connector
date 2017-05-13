@@ -7,16 +7,17 @@ import org.json.JSONObject;
  */
 public class Example {
 
-    private static final String CLIENT_ID = "33e921e00d69ce18a6143285756b01d93a178db59708d2c1290d915487e3c647";
-    private static final String CLIENT_TOKEN = "4e8b107d9f5ba114a5a3eaa1b2513b2b7ddd16d24e874d9205137a52eae40bab";
+    private static final String CLIENT_ID = "b471a17e3371f3d223b390f108bb989f3dc7d3f432cfbff9f9c29ac80e10bb97";
+    private static final String CLIENT_TOKEN = "5538fcbc29f7066ba02d5c024d3e3f4de49a0526f50f9b224325693d5472b851";
 
     public static void main(String[] args) throws Exception{    
-        ApiConnector apiConnector = new ApiConnector("localhost", 22322);
+        ApiConnector apiConnector = new ApiConnector("calendar.darkaqua.net", 8080);
         apiConnector.auth(CLIENT_ID, CLIENT_TOKEN);
 
         JSONObject jsonObject = new JSONObject();
+        jsonObject.put("user_uuid", "asd");
 
-        apiConnector.GET("user/companies", jsonObject, new Request() {
+        apiConnector.GET("user", jsonObject, new Request() {
 
             public void Response(Object object) {
                 System.out.println(object.toString());
